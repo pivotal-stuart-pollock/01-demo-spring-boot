@@ -71,7 +71,7 @@ public class UserController {
 	 * GET /users/count -> get a specific user by login id.
 	 */
 	@RequestMapping(value = "/users/count", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	ResponseEntity<Integer> count() {
+	public int count() {
 		int count = 0;
 		final Iterable<User> users = userRepository.findAll();
 		if (users != null) {
@@ -81,7 +81,7 @@ public class UserController {
 				++count;
 			}
 		}
-		return new ResponseEntity<>(count, HttpStatus.OK);
+		return count;
 	}
 
 	/**
